@@ -1,0 +1,8 @@
+/* O Storybook carrega as mesmas fontes do app, sem next/font. */
+@import "@fontsource-variable/figtree/wght.css";
+@import "@fontsource-variable/bricolage-grotesque/wght.css";
+
+:root {
+  --font-sans: "Figtree Variable";
+  --font-display: "Bricolage Grotesque Variable";
+}
