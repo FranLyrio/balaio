@@ -81,6 +81,8 @@
   --animate-slide-out-right: slide-out-right 200ms var(--ease-standard);
   --animate-slide-in-left: slide-in-left 280ms var(--ease-standard);
   --animate-slide-out-left: slide-out-left 200ms var(--ease-standard);
+  --animate-slide-in-bottom: slide-in-bottom 280ms var(--ease-standard);
+  --animate-slide-out-bottom: slide-out-bottom 200ms var(--ease-standard);
   --animate-toast-in: toast-in 240ms var(--ease-standard);
 
   @keyframes fade-in {
@@ -123,6 +125,16 @@
   @keyframes slide-out-left {
     to {
       transform: translateX(-100%);
+    }
+  }
+  @keyframes slide-in-bottom {
+    from {
+      transform: translateY(100%);
+    }
+  }
+  @keyframes slide-out-bottom {
+    to {
+      transform: translateY(100%);
     }
   }
   @keyframes toast-in {
