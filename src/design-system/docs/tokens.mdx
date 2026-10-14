@@ -1,0 +1,156 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import {
+  ControlHeights,
+  FontFamilies,
+  RadiusScale,
+  SpacingScale,
+  SwatchGrid,
+  TypeScale,
+} from "./token-docs";
+
+<Meta title="Fundamentos/Tokens" />
+
+# Tokens
+
+A fonte única da verdade é o CSS em `src/design-system/styles/tokens/`. Os valores
+abaixo são lidos ao vivo das variáveis CSS, então esta página nunca fica desatualizada.
+
+Há duas camadas:
+
+1. **Paleta** (`palette.css`): valores crus da marca. Componentes **não** usam estas cores.
+2. **Semânticos** (`semantic.css`): o que os componentes usam (`bg-surface`, `text-fg`,
+   `bg-primary`…). Um tema escuro só precisa redefinir as variáveis `--ui-*`.
+
+## Cores semânticas
+
+### Fundo e superfície
+
+<SwatchGrid
+  items={[
+    ["--color-page", "fundo da página"],
+    ["--color-surface", "superfície (cards, campos)"],
+    ["--color-surface-subtle", "superfície petróleo clara"],
+    ["--color-surface-inverse", "superfície petróleo"],
+  ]}
+/>
+
+### Texto
+
+<SwatchGrid
+  items={[
+    ["--color-fg", "principal"],
+    ["--color-fg-muted", "secundário"],
+    ["--color-fg-subtle", "apoio"],
+    ["--color-fg-inverse", "sobre petróleo"],
+    ["--color-fg-inverse-muted", "apoio sobre petróleo"],
+  ]}
+/>
+
+### Borda
+
+<SwatchGrid
+  items={[
+    ["--color-border", "padrão"],
+    ["--color-border-strong", "forte (decorativa)"],
+    ["--color-border-control", "contorno de campos (3:1)"],
+    ["--color-divider", "divisória"],
+  ]}
+/>
+
+### Primário e destaque
+
+<SwatchGrid
+  items={[
+    ["--color-primary", "petróleo 700"],
+    ["--color-primary-hover", "petróleo 800"],
+    ["--color-primary-active", "petróleo 900"],
+    ["--color-primary-subtle", "petróleo 100"],
+    ["--color-accent", "limão 500 · só como fundo"],
+    ["--color-accent-hover", "limão 200"],
+    ["--color-accent-subtle", "limão 50"],
+  ]}
+/>
+
+### Estados
+
+<SwatchGrid
+  items={[
+    ["--color-success", "preços, parcelas, descontos"],
+    ["--color-success-subtle", "fundo de sucesso"],
+    ["--color-danger", "erro"],
+    ["--color-danger-subtle", "fundo de erro"],
+    ["--color-rating", "estrelas de avaliação"],
+    ["--color-focus-ring", "contorno do foco"],
+    ["--color-focus-halo", "halo do foco"],
+  ]}
+/>
+
+## Paleta
+
+<SwatchGrid
+  items={[
+    "--color-petroleo-900",
+    "--color-petroleo-800",
+    "--color-petroleo-700",
+    "--color-petroleo-600",
+    "--color-petroleo-200",
+    "--color-petroleo-100",
+    "--color-limao-500",
+    "--color-limao-200",
+    "--color-limao-100",
+    "--color-limao-50",
+    "--color-tinta-900",
+    "--color-tinta-700",
+    "--color-tinta-500",
+    "--color-branco",
+    "--color-neutro-50",
+    "--color-neutro-100",
+    "--color-neutro-200",
+    "--color-neutro-400",
+    "--color-neutro-500",
+    "--color-verde-700",
+    "--color-verde-50",
+    "--color-vermelho-700",
+    "--color-vermelho-50",
+    "--color-ambar-500",
+  ]}
+/>
+
+**Regra do limão:** limão é sempre fundo, com texto `--color-accent-fg` (#14201F) por cima.
+Nunca use limão como cor de texto sobre fundo claro (contraste de 1.29:1 sobre branco).
+
+## Tipografia
+
+<FontFamilies />
+
+Display usa letter-spacing negativo: `tracking-display` (-0.02em), `tracking-display-tight`
+(-0.03em) e `tracking-display-tighter` (-0.035em). Preços usam `tabular-nums`
+(`<Text numeric>`).
+
+<TypeScale />
+
+## Espaçamento
+
+Base de 4px. Use apenas os passos da escala:
+
+<SpacingScale />
+
+## Raios
+
+<RadiusScale />
+
+## Alturas de controle
+
+<ControlHeights />
+
+## Outros tokens
+
+- **Bordas:** 1px por padrão (`border`); 1.5px em botões e chips com contorno (`border-strong`).
+- **Foco:** contorno de 2px em `--ui-focus-ring` + halo de 4px em `--ui-focus-halo`. Aplicado
+  globalmente em `:focus-visible` e disponível como utilitário `focus-ring`.
+- **Container:** `container-page` — até 1200px com 24px de margem lateral.
+- **Sombra:** só `shadow-overlay`, em camadas flutuantes (popover, dialog, sheet, toast).
+- **Camadas:** `z-sticky` 100 · `z-overlay` 400 · `z-modal` 500 · `z-popover` 600 · `z-toast` 700 · `z-tooltip` 800.
+- **Movimento:** `--duration-fast` 120ms · `--duration-base` 200ms · `--duration-slow` 320ms,
+  `ease-standard`. Com `prefers-reduced-motion: reduce`, animações e transições são desligadas
+  (exceto as marcadas com `data-essential-motion`, como o Spinner, que fica mais lento).
