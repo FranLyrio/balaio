@@ -1,0 +1,154 @@
+/*
+ * Tipografia, espaçamento, raios, sombras, controles, camadas e movimento.
+ */
+@theme {
+  /*
+   * Fontes: o app (next/font) e o Storybook (@fontsource) definem
+   * --font-sans e --font-display. O tema não define esses nomes para não
+   * sobrescrever o que chega de fora; as classes `font-sans` e
+   * `font-display` ficam em base.css.
+   */
+  --font-sans: initial;
+  --font-serif: initial;
+  --default-font-family: var(--font-sans, ui-sans-serif), ui-sans-serif, system-ui, sans-serif;
+
+  /* Escala tipográfica (px → rem, base 16px), cada tamanho com line-height */
+  --text-*: initial;
+  --text-xs: 0.75rem; /* 12 */
+  --text-xs--line-height: 1rem;
+  --text-sm: 0.8125rem; /* 13 */
+  --text-sm--line-height: 1.125rem;
+  --text-md: 0.875rem; /* 14 */
+  --text-md--line-height: 1.25rem;
+  --text-base: 0.9375rem; /* 15 — corpo */
+  --text-base--line-height: 1.375rem;
+  --text-lg: 1.0625rem; /* 17 */
+  --text-lg--line-height: 1.5rem;
+  --text-xl: 1.25rem; /* 20 */
+  --text-xl--line-height: 1.75rem;
+  --text-2xl: 1.5rem; /* 24 */
+  --text-2xl--line-height: 1.875rem;
+  --text-3xl: 1.75rem; /* 28 */
+  --text-3xl--line-height: 2.125rem;
+  --text-4xl: 2.125rem; /* 34 */
+  --text-4xl--line-height: 2.5rem;
+  --text-5xl: 2.75rem; /* 44 */
+  --text-5xl--line-height: 3.125rem;
+  --text-6xl: 3.375rem; /* 54 */
+  --text-6xl--line-height: 3.75rem;
+
+  /* Letter-spacing do display */
+  --tracking-display: -0.02em;
+  --tracking-display-tight: -0.03em;
+  --tracking-display-tighter: -0.035em;
+
+  /*
+   * Espaçamento: base de 4px. Escala permitida:
+   * 1(4) 2(8) 3(12) 4(16) 5(20) 6(24) 8(32) 10(40) 12(48) 14(56) 16(64) 18(72)
+   */
+  --spacing: 0.25rem;
+
+  /* Alturas de controle */
+  --spacing-control-sm: 2.25rem; /* 36 */
+  --spacing-control-md: 2.75rem; /* 44 — padrão e alvo mínimo de toque */
+  --spacing-control-lg: 3.25rem; /* 52 */
+
+  /* Container */
+  --container-page: 75rem; /* 1200 */
+
+  /* Raios (rounded-full continua disponível) */
+  --radius-*: initial;
+  --radius-tag: 6px;
+  --radius-control: 12px;
+  --radius-card: 18px;
+  --radius-panel: 24px;
+
+  /* Sombras: só em camadas flutuantes */
+  --shadow-*: initial;
+  --shadow-overlay: 0 2px 6px rgb(8 51 59 / 0.08), 0 16px 40px rgb(8 51 59 / 0.16);
+
+  /* Movimento */
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-emphasized: cubic-bezier(0.3, 0, 0, 1.2);
+  --default-transition-duration: 160ms;
+  --default-transition-timing-function: cubic-bezier(0.2, 0, 0, 1);
+
+  --animate-fade-in: fade-in 200ms var(--ease-standard);
+  --animate-fade-out: fade-out 160ms var(--ease-standard);
+  --animate-scale-in: scale-in 200ms var(--ease-standard);
+  --animate-scale-out: scale-out 160ms var(--ease-standard);
+  --animate-slide-in-right: slide-in-right 280ms var(--ease-standard);
+  --animate-slide-out-right: slide-out-right 200ms var(--ease-standard);
+  --animate-slide-in-left: slide-in-left 280ms var(--ease-standard);
+  --animate-slide-out-left: slide-out-left 200ms var(--ease-standard);
+  --animate-toast-in: toast-in 240ms var(--ease-standard);
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+  }
+  @keyframes fade-out {
+    to {
+      opacity: 0;
+    }
+  }
+  @keyframes scale-in {
+    from {
+      opacity: 0;
+      transform: scale(0.96);
+    }
+  }
+  @keyframes scale-out {
+    to {
+      opacity: 0;
+      transform: scale(0.96);
+    }
+  }
+  @keyframes slide-in-right {
+    from {
+      transform: translateX(100%);
+    }
+  }
+  @keyframes slide-out-right {
+    to {
+      transform: translateX(100%);
+    }
+  }
+  @keyframes slide-in-left {
+    from {
+      transform: translateX(-100%);
+    }
+  }
+  @keyframes slide-out-left {
+    to {
+      transform: translateX(-100%);
+    }
+  }
+  @keyframes toast-in {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+  }
+}
+
+:root {
+  /* Durações */
+  --duration-fast: 120ms;
+  --duration-base: 200ms;
+  --duration-slow: 320ms;
+
+  /* Camadas */
+  --z-base: 0;
+  --z-sticky: 100;
+  --z-overlay: 400;
+  --z-modal: 500;
+  --z-popover: 600;
+  --z-toast: 700;
+  --z-tooltip: 800;
+
+  /* Bordas */
+  --border-width: 1px;
+  --border-width-strong: 1.5px;
+}

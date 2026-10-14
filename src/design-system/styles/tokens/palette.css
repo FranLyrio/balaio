@@ -1,0 +1,42 @@
+/*
+ * Camada 1 — Paleta.
+ * Valores crus da marca. Os componentes NÃO usam estas cores diretamente
+ * (há uma regra de lint para isso): eles usam os tokens semânticos.
+ * `static` garante que todas as variáveis sejam emitidas, mesmo sem uso.
+ */
+@theme static {
+  --color-*: initial;
+
+  /* Petróleo (marca) */
+  --color-petroleo-900: #08333b;
+  --color-petroleo-800: #0a3b44;
+  --color-petroleo-700: #0c4a55;
+  --color-petroleo-600: #135a66;
+  --color-petroleo-200: #cfe3e6;
+  --color-petroleo-100: #eaf3f4;
+
+  /* Limão (destaque) — sempre fundo, nunca texto sobre fundo claro */
+  --color-limao-500: #c8f169;
+  --color-limao-200: #ddf7a0;
+  --color-limao-100: #e4f8b9;
+  --color-limao-50: #f1f9e2;
+
+  /* Tinta (texto) */
+  --color-tinta-900: #14201f;
+  --color-tinta-700: #2f3d3a;
+  --color-tinta-500: #55625f;
+
+  /* Neutros */
+  --color-branco: #ffffff;
+  --color-neutro-50: #f3f5f4;
+  --color-neutro-100: #e6ecea;
+  --color-neutro-200: #dce3e1;
+  --color-neutro-400: #b4bfbc;
+
+  /* Estados */
+  --color-verde-700: #0b6e3a;
+  --color-verde-50: #e7f3ec;
+  --color-vermelho-700: #b42318;
+  --color-vermelho-50: #fdeceb;
+  --color-ambar-500: #e8a317;
+}

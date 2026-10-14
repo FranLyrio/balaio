@@ -1,0 +1,112 @@
+/*
+ * Camada 2 — Tokens semânticos.
+ *
+ * Os valores ficam em variáveis `--ui-*` no :root e são mapeados para o
+ * Tailwind com `@theme inline`. Assim a classe gerada (ex.: `bg-surface`)
+ * aponta para a variável viva, e um tema escuro só precisa redefinir as
+ * `--ui-*` dentro de `[data-theme="dark"]`, sem tocar nos componentes.
+ */
+:root {
+  /* Fundos e superfícies */
+  --ui-page: var(--color-neutro-50);
+  --ui-surface: var(--color-branco);
+  --ui-surface-subtle: var(--color-petroleo-100);
+  --ui-surface-inverse: var(--color-petroleo-700);
+
+  /* Texto */
+  --ui-fg: var(--color-tinta-900);
+  --ui-fg-muted: var(--color-tinta-700);
+  --ui-fg-subtle: var(--color-tinta-500);
+  --ui-fg-inverse: var(--color-branco);
+  --ui-fg-inverse-muted: var(--color-petroleo-200);
+
+  /* Bordas */
+  --ui-border: var(--color-neutro-200);
+  --ui-border-strong: var(--color-neutro-400);
+  --ui-divider: var(--color-neutro-100);
+
+  /* Primário (petróleo) */
+  --ui-primary: var(--color-petroleo-700);
+  --ui-primary-hover: var(--color-petroleo-800);
+  --ui-primary-active: var(--color-petroleo-900);
+  --ui-primary-fg: var(--color-branco);
+  --ui-primary-subtle: var(--color-petroleo-100);
+
+  /* Destaque (limão) — texto sempre --ui-accent-fg */
+  --ui-accent: var(--color-limao-500);
+  --ui-accent-hover: var(--color-limao-200);
+  --ui-accent-active: var(--color-limao-100);
+  --ui-accent-fg: var(--color-tinta-900);
+  --ui-accent-subtle: var(--color-limao-50);
+
+  /* Sucesso (preços, parcelas, descontos) */
+  --ui-success: var(--color-verde-700);
+  --ui-success-subtle: var(--color-verde-50);
+
+  /* Perigo */
+  --ui-danger: var(--color-vermelho-700);
+  --ui-danger-fg: var(--color-branco);
+  --ui-danger-subtle: var(--color-vermelho-50);
+
+  /* Avaliação */
+  --ui-rating: var(--color-ambar-500);
+
+  /* Foco */
+  --ui-focus-ring: var(--color-tinta-900);
+  --ui-focus-halo: var(--color-limao-500);
+
+  /* Véu atrás de dialog e sheet (petróleo 900 a 48%) */
+  --ui-scrim: rgb(8 51 59 / 0.48);
+}
+
+/*
+ * Tema escuro — estrutura pronta, ainda não implementado.
+ * Para ativar: defina aqui as mesmas variáveis --ui-* e aplique
+ * `data-theme="dark"` no <html>.
+ */
+[data-theme="dark"] {
+  /* --ui-page: …; */
+}
+
+@theme inline {
+  --color-page: var(--ui-page);
+  --color-surface: var(--ui-surface);
+  --color-surface-subtle: var(--ui-surface-subtle);
+  --color-surface-inverse: var(--ui-surface-inverse);
+
+  --color-fg: var(--ui-fg);
+  --color-fg-muted: var(--ui-fg-muted);
+  --color-fg-subtle: var(--ui-fg-subtle);
+  --color-fg-inverse: var(--ui-fg-inverse);
+  --color-fg-inverse-muted: var(--ui-fg-inverse-muted);
+
+  --color-border: var(--ui-border);
+  --color-border-strong: var(--ui-border-strong);
+  --color-divider: var(--ui-divider);
+
+  --color-primary: var(--ui-primary);
+  --color-primary-hover: var(--ui-primary-hover);
+  --color-primary-active: var(--ui-primary-active);
+  --color-primary-fg: var(--ui-primary-fg);
+  --color-primary-subtle: var(--ui-primary-subtle);
+
+  --color-accent: var(--ui-accent);
+  --color-accent-hover: var(--ui-accent-hover);
+  --color-accent-active: var(--ui-accent-active);
+  --color-accent-fg: var(--ui-accent-fg);
+  --color-accent-subtle: var(--ui-accent-subtle);
+
+  --color-success: var(--ui-success);
+  --color-success-subtle: var(--ui-success-subtle);
+
+  --color-danger: var(--ui-danger);
+  --color-danger-fg: var(--ui-danger-fg);
+  --color-danger-subtle: var(--ui-danger-subtle);
+
+  --color-rating: var(--ui-rating);
+
+  --color-focus-ring: var(--ui-focus-ring);
+  --color-focus-halo: var(--ui-focus-halo);
+
+  --color-scrim: var(--ui-scrim);
+}

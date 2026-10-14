@@ -1,0 +1,12 @@
+/*
+ * Ponto de entrada de estilos do design system Balaio.
+ * O app importa por `@balaio/ui/styles.css`.
+ */
+@import "tailwindcss";
+@import "./tokens/palette.css";
+@import "./tokens/semantic.css";
+@import "./tokens/foundation.css";
+@import "./base.css";
+
+/* Garante que as classes do design system sejam geradas mesmo fora do app */
+@source "../";

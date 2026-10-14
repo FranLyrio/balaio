@@ -66,11 +66,13 @@ export default defineConfig([
           message: "Não use cores em hex nos componentes. Use um token semântico.",
         },
         {
-          selector: "Literal[value=/\\b(petroleo|limao|neutro)-\\d+/]",
+          selector:
+            "Literal[value=/\\b(petroleo|limao|neutro|tinta|verde|vermelho|ambar)-\\d+|-branco\\b/]",
           message: "Componentes usam só tokens semânticos, nunca a paleta direta.",
         },
         {
-          selector: "TemplateElement[value.raw=/\\b(petroleo|limao|neutro)-\\d+/]",
+          selector:
+            "TemplateElement[value.raw=/\\b(petroleo|limao|neutro|tinta|verde|vermelho|ambar)-\\d+|-branco\\b/]",
           message: "Componentes usam só tokens semânticos, nunca a paleta direta.",
         },
       ],
@@ -87,7 +89,12 @@ export default defineConfig([
         {
           patterns: [
             {
-              group: ["@/design-system", "@/design-system/*", "**/design-system", "**/design-system/*"],
+              group: [
+                "@/design-system",
+                "@/design-system/*",
+                "**/design-system",
+                "**/design-system/*",
+              ],
               message: "Importe o design system só por '@balaio/ui'.",
             },
           ],
