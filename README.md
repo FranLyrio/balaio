@@ -22,16 +22,23 @@ construídos com o design system.
 
 ## Como rodar
 
-Requisitos: **Node 22.12+** e **corepack** (vem com o Node). O Yarn usado é o 4.x fixado no
-campo `packageManager` do `package.json`:
+Requisitos:
 
-```bash
-corepack enable
-```
+- **Node LTS** — o `.nvmrc` aponta para `lts/*` (mínimo 22.12, ver `engines`). Com nvm:
+
+  ```bash
+  nvm install
+  ```
+
+- **corepack**, que ativa o Yarn 4.x fixado em `packageManager` no `package.json`. Até o Node 24
+  ele vem junto; a partir do Node 25 precisa ser instalado:
+
+  ```bash
+  npm install -g corepack && corepack enable
+  ```
 
 > Se `yarn -v` mostrar 1.x, há um Yarn clássico instalado globalmente na frente do corepack no
-> seu PATH. Desinstale-o (`npm uninstall -g yarn` ou `brew uninstall yarn`) ou rode os comandos
-> como `corepack yarn …`.
+> seu PATH. Remova-o ou rode os comandos como `corepack yarn …`.
 
 ```bash
 yarn install
@@ -63,7 +70,8 @@ Abra http://localhost:6006.
 | `yarn storybook`       | Storybook em modo dev                              |
 | `yarn build-storybook` | Storybook estático em `storybook-static/`          |
 
-O CI (`.github/workflows/ci.yml`) roda `format:check`, `lint`, `typecheck` e `test` a cada push.
+O CI (`.github/workflows/ci.yml`) usa a mesma versão do `.nvmrc` e roda `format:check`, `lint`,
+`typecheck` e `test` a cada push.
 
 ## Estrutura
 
