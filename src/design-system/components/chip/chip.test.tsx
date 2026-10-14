@@ -70,3 +70,21 @@ describe("RemovableChip", () => {
     await expect(container).toHaveNoAxeViolations();
   });
 });
+
+describe("RemovableChip desabilitado", () => {
+  it("marca aria-disabled e não remove", async () => {
+    const user = userEvent.setup();
+    const onRemove = vi.fn();
+    render(
+      <RemovableChip onRemove={onRemove} disabled>
+        Bahia
+      </RemovableChip>,
+    );
+    expect(screen.getByText("Bahia").closest("[data-slot='chip']")).toHaveAttribute(
+      "aria-disabled",
+      "true",
+    );
+    await user.click(screen.getByRole("button", { name: "Remover Bahia" }));
+    expect(onRemove).not.toHaveBeenCalled();
+  });
+});

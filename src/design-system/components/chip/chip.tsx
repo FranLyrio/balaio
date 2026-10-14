@@ -114,9 +114,11 @@ export function RemovableChip({
         chipVariants({ size, selected }),
         resolvedSize === "md" ? "pl-4" : "pl-3",
         "pr-0",
-        disabled && "opacity-50",
+        // sem opacidade: um <span> não é isento da regra de contraste
+        disabled && "border-border bg-page text-fg-subtle",
         className,
       )}
+      aria-disabled={disabled || undefined}
       {...props}
     >
       {icon}
