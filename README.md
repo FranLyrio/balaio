@@ -18,25 +18,33 @@ construídos com o design system.
 | Testes         | Vitest 5, Testing Library, jsdom, axe-core                         |
 | Documentação   | Storybook 10 (`@storybook/react-vite`) com addon de acessibilidade |
 | Qualidade      | ESLint 9, Prettier, GitHub Actions                                 |
-| Gerenciador    | pnpm 12                                                            |
+| Gerenciador    | Yarn 4 (via corepack, com `node_modules`)                          |
 
 ## Como rodar
 
-Requisitos: **Node 22.12+** e **pnpm** (`corepack enable pnpm` instala a versão do
-`packageManager`).
+Requisitos: **Node 22.12+** e **corepack** (vem com o Node). O Yarn usado é o 4.x fixado no
+campo `packageManager` do `package.json`:
 
 ```bash
-pnpm install
+corepack enable
+```
+
+> Se `yarn -v` mostrar 1.x, há um Yarn clássico instalado globalmente na frente do corepack no
+> seu PATH. Desinstale-o (`npm uninstall -g yarn` ou `brew uninstall yarn`) ou rode os comandos
+> como `corepack yarn …`.
+
+```bash
+yarn install
 ```
 
 ```bash
-pnpm dev
+yarn dev
 ```
 
 Abra http://localhost:3000. Para o Storybook:
 
 ```bash
-pnpm storybook
+yarn storybook
 ```
 
 Abra http://localhost:6006.
@@ -45,15 +53,15 @@ Abra http://localhost:6006.
 
 | Script                 | O que faz                                          |
 | ---------------------- | -------------------------------------------------- |
-| `pnpm dev`             | Servidor de desenvolvimento do Next.js             |
-| `pnpm build`           | Build de produção do app                           |
-| `pnpm start`           | Sobe o build de produção                           |
-| `pnpm lint`            | ESLint em todo o projeto                           |
-| `pnpm typecheck`       | `tsc --noEmit`                                     |
-| `pnpm test`            | Testes (Vitest) uma vez; `pnpm test:watch` assiste |
-| `pnpm format`          | Formata com Prettier (`format:check` só confere)   |
-| `pnpm storybook`       | Storybook em modo dev                              |
-| `pnpm build-storybook` | Storybook estático em `storybook-static/`          |
+| `yarn dev`             | Servidor de desenvolvimento do Next.js             |
+| `yarn build`           | Build de produção do app                           |
+| `yarn start`           | Sobe o build de produção                           |
+| `yarn lint`            | ESLint em todo o projeto                           |
+| `yarn typecheck`       | `tsc --noEmit`                                     |
+| `yarn test`            | Testes (Vitest) uma vez; `yarn test:watch` assiste |
+| `yarn format`          | Formata com Prettier (`format:check` só confere)   |
+| `yarn storybook`       | Storybook em modo dev                              |
+| `yarn build-storybook` | Storybook estático em `storybook-static/`          |
 
 O CI (`.github/workflows/ci.yml`) roda `format:check`, `lint`, `typecheck` e `test` a cada push.
 
@@ -169,7 +177,7 @@ Popover, Tooltip, Tabs e Toast.
    - `"use client"` apenas se tiver estado, efeitos, contexto ou handlers;
    - nada de `next/*` nem imports do app; para integrar com o framework, ofereça `asChild`.
 3. Exporte em `src/design-system/index.ts`.
-4. Rode `pnpm lint && pnpm typecheck && pnpm test` e confira a aba **Accessibility** no
+4. Rode `yarn lint && yarn typecheck && yarn test` e confira a aba **Accessibility** no
    Storybook.
 
 Componentes de feature (ProductCard, Header, Price…) **não** vão para o design system: ficam no
@@ -179,8 +187,8 @@ app (ex.: `src/app/_components` ou `src/features`) e são montados com o `@balai
 
 A estrutura já está pronta para a extração; os imports do app não mudam.
 
-1. Mover `src/design-system/` para `packages/ui/src/` e criar um workspace do pnpm
-   (`pnpm-workspace.yaml` com `packages/*`).
+1. Mover `src/design-system/` para `packages/ui/src/` e transformar o projeto num workspace do
+   Yarn (`"workspaces": ["packages/*"]` no `package.json` da raiz).
 2. Criar `packages/ui/package.json` com `"name": "@balaio/ui"`, `exports` para `.` (JS + tipos)
    e `./styles.css`, `peerDependencies` de `react` e `react-dom`, e as dependências de runtime
    (Radix, cva, clsx, tailwind-merge, lucide-react).

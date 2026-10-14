@@ -16,16 +16,17 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      # Lê a versão do pnpm do campo "packageManager" do package.json
-      - uses: pnpm/action-setup@v6
+      # Ativa o Yarn da versão fixada em "packageManager" no package.json.
+      # Precisa vir antes do setup-node para o cache de Yarn funcionar.
+      - run: corepack enable
 
       - uses: actions/setup-node@v7
         with:
           node-version: 22
-          cache: pnpm
+          cache: yarn
 
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm format:check
-      - run: pnpm lint
-      - run: pnpm typecheck
-      - run: pnpm test
+      - run: yarn install --immutable
+      - run: yarn format:check
+      - run: yarn lint
+      - run: yarn typecheck
+      - run: yarn test

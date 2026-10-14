@@ -1,11 +1,16 @@
 {
   "version": "0.0.1",
   "configurations": [
-    { "name": "app", "runtimeExecutable": "pnpm", "runtimeArgs": ["dev"], "port": 3000 },
+    {
+      "name": "app",
+      "runtimeExecutable": "corepack",
+      "runtimeArgs": ["yarn", "dev"],
+      "port": 3000
+    },
     {
       "name": "storybook",
-      "runtimeExecutable": "pnpm",
-      "runtimeArgs": ["storybook", "--no-open", "--ci"],
+      "runtimeExecutable": "corepack",
+      "runtimeArgs": ["yarn", "storybook", "--no-open", "--ci"],
       "port": 6006
     }
   ]
