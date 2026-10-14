@@ -24,6 +24,7 @@
   --ui-border: var(--color-neutro-200);
   --ui-border-strong: var(--color-neutro-400);
   --ui-divider: var(--color-neutro-100);
+  --ui-border-control: var(--color-neutro-500);
 
   /* Primário (petróleo) */
   --ui-primary: var(--color-petroleo-700);
@@ -83,6 +84,7 @@
   --color-border: var(--ui-border);
   --color-border-strong: var(--ui-border-strong);
   --color-divider: var(--ui-divider);
+  --color-border-control: var(--ui-border-control);
 
   --color-primary: var(--ui-primary);
   --color-primary-hover: var(--ui-primary-hover);

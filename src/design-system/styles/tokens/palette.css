@@ -32,6 +32,7 @@
   --color-neutro-100: #e6ecea;
   --color-neutro-200: #dce3e1;
   --color-neutro-400: #b4bfbc;
+  --color-neutro-500: #7e8b88; /* contorno de controle: 3:1 sobre branco e sobre a página */
 
   /* Estados */
   --color-verde-700: #0b6e3a;
