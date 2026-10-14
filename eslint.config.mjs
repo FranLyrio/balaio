@@ -58,11 +58,13 @@ export default defineConfig([
       "no-restricted-syntax": [
         "error",
         {
-          selector: "Literal[value=/#[0-9a-fA-F]{3,8}\\b/]",
+          selector:
+            "Literal[value=/(^|[\\s:(\\[,_-])#([0-9a-fA-F]{3}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})\\b/]",
           message: "Não use cores em hex nos componentes. Use um token semântico.",
         },
         {
-          selector: "TemplateElement[value.raw=/#[0-9a-fA-F]{3,8}\\b/]",
+          selector:
+            "TemplateElement[value.raw=/(^|[\\s:(\\[,_-])#([0-9a-fA-F]{3}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})\\b/]",
           message: "Não use cores em hex nos componentes. Use um token semântico.",
         },
         {
