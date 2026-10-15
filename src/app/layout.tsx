@@ -18,7 +18,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="pt-BR" className={`${fontSans.variable} ${fontDisplay.variable}`}>
       <body className="min-h-dvh font-sans">
         <TooltipProvider>
-          <ToastProvider>{children}</ToastProvider>
+          <ToastProvider>
+            <header>header</header>
+            {children}
+          </ToastProvider>
         </TooltipProvider>
       </body>
     </html>

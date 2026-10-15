@@ -63,6 +63,17 @@
     color: var(--ui-accent-fg);
   }
 
+  /*
+   * Todo link e botão clicável usa a mãozinha. O Tailwind v4 deixa os botões
+   * com o cursor padrão do navegador. Os desabilitados ficam de fora e seguem
+   * com o `cursor-not-allowed` de cada componente.
+   */
+  a[href],
+  button:not(:disabled, [aria-disabled="true"]),
+  [role="button"]:not([aria-disabled="true"]) {
+    cursor: pointer;
+  }
+
   /* Foco visível em todo elemento interativo, por padrão */
   :focus-visible {
     outline: 2px solid var(--ui-focus-ring);
